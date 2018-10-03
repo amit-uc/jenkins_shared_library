@@ -18,7 +18,19 @@ def call(String git_repository, String git_username='amithapa', String git_branc
 
     stage('Build and Test') {
         node('master') {
-            echo application_name
+            echo "Build and Test"
+        }
+    }
+
+    stage('Deploy on Staging') {
+        node('master') {
+            echo 'Deploy on Staging'
+        }
+    }
+
+    stage('Deploy on Production') {
+        node('master') {
+            echo 'Deploy on Production'
         }
     }
 
