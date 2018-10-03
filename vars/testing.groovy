@@ -11,7 +11,7 @@ def call() {
             def jsonSlurper = new groovy.json.JsonSlurper()
             def pipeline_map_data = jsonSlurper.parseText(data)
 
-            sh "echo ${pipeline_map_data}"
+            sh "echo ${data}"
         }
     }
 }
