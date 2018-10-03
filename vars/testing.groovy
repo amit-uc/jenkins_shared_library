@@ -1,5 +1,5 @@
 def call(String git_repository, String git_username='amithapa', String git_branch='staging', String pipeline_json_path='pipeline.json') {
-    def pipeline_map_data
+
     stage('checkout') {
         node('master') {
             // Checks Out to Specific Branch
@@ -9,7 +9,8 @@ def call(String git_repository, String git_username='amithapa', String git_branc
             data = readFile pipeline_json_path
             // Convert to map
             def jsonSlurper = new groovy.json.JsonSlurper()
-            pipeline_map_data = jsonSlurper.parseText(data)
+            def pipeline_map_data = jsonSlurper.parseText(data)
+            application_name = pipeline_map_data.application_name
 
             echo data
         }
@@ -17,7 +18,7 @@ def call(String git_repository, String git_username='amithapa', String git_branc
 
     stage('Build and Test') {
         node('master') {
-            echo pipeline_map_data.application_name
+            echo application_name
         }
     }
 
