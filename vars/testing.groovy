@@ -1,9 +1,8 @@
-def call() {
+def call(git_repository, git_username='amithapa', git_branch='staging', pipeline_json_path='pipeline.json') {
     stage('checkout') {
         node('master') {
             // Checks Out to Specific Branch
-            git branch: 'staging', url: 'git@github.com:amithapa/development_docker.git'
-            String pipeline_json_path = "pipeline.json"
+            git branch: "${git_branch}", url: "git@github.com:${git_username}/${git_repository}.git"
 
             // Read the pipeline Configuration
             data = readFile pipeline_json_path
