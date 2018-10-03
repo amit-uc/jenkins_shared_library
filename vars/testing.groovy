@@ -9,9 +9,9 @@ def call() {
             data = readFile pipeline_json_path
             // Convert to map
             def jsonSlurper = new groovy.json.JsonSlurper()
-
             def pipeline_map_data = jsonSlurper.parseText(data)
-            echo pipeline_map_data
+
+            sh "echo ${pipeline_map_data}"
         }
     }
 }
