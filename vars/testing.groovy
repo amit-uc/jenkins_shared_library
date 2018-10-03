@@ -8,7 +8,7 @@ def call() {
             // Read the pipeline Configuration
             data = readFile pipeline_json_path
             // Convert to map
-            JsonSlurper jsonSlurper = new groovy.json.JsonSlurper()
+            def jsonSlurper = new groovy.json.JsonSlurper()
 
             def pipeline_map_data = jsonSlurper.parseText(data)
             echo pipeline_map_data
