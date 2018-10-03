@@ -1,9 +1,17 @@
-def call(Map data) {
+def call() {
     stage('checkout') {
         node('master') {
             // Checks Out to Specific Branch
             git branch: 'staging', url: 'git@github.com:amithapa/development_docker.git'
-            echo data
+            String pipeline_json_path = "pipeline.json"
+
+            // Read the pipeline Configuration
+            data = readFile pipeline_json_path
+            // Convert to map
+            JsonSlurper jsonSlurper = new groovy.json.JsonSlurper()
+
+            def pipeline_map_data = jsonSlurper.parseText(data)
+            echo pipeline_map_data
         }
     }
 }
