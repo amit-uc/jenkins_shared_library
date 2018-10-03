@@ -1,4 +1,4 @@
-def call(git_repository, git_username='amithapa', git_branch='staging', pipeline_json_path='pipeline.json') {
+def call(String git_repository, String git_username='amithapa', String git_branch='staging', String pipeline_json_path='pipeline.json') {
     stage('checkout') {
         node('master') {
             // Checks Out to Specific Branch
